@@ -1,1 +1,35 @@
-<p>register works!</p>
+<div class="container"><div class="row"><div class="col-6">
+
+
+
+
+
+      <form [formGroup]="userForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name </label>
+          <input type="text" class="form-control" id="name" aria-describedby="name" formControlName="username">
+       
+        </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email </label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label   for="exampleInputPassword" class="form-label">Repeat Password</label>
+            <input formControlName="confirmpassword" type="password" class="form-control" id="exampleInputPassword">
+          </div>
+          <div class="aler aler-danger">password incorrect</div>
+     
+          <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid  || (userForm.value.password !== userForm.value.confirmpassword) "  (click)="submit()">login</button>
+        </form>
+
+
+
+
+</div></div></div>

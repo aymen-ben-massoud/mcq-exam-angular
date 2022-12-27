@@ -1,16 +1,27 @@
 {
-
-    "students": 
-        [
-
-        ],
-        "doctors": 
-        [
-
-        ],
-        "login": 
-        [
-
-        ]
-    
+  "students": [
+    {
+      "username": "aymen",
+      "email": "aymen@123.com",
+      "password": "123",
+      "confirmpassword": "123",
+      "id": 1
+    },
+    {
+      "username": "aymen",
+      "email": "aymen@123.com",
+      "password": "123",
+      "confirmpassword": "123",
+      "id": 2
+    },
+    {
+      "username": "aymen",
+      "email": "aymen@123.com",
+      "password": "azerty",
+      "confirmpassword": "azerty",
+      "id": 3
+    }
+  ],
+  "doctors": [],
+  "login": []
 }

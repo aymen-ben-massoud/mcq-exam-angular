@@ -1,6 +1,6 @@
 {
   "name": "mcq",
-  "version": "0.0.0",
+  "version": "",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,7 +22,7 @@
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",
-    "server": "json-server db.json --watch --port 5000"
+    "server": "json-server db.json --watch --port 3000"
 
   },
   "devDependencies": {
