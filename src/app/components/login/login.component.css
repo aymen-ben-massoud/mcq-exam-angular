@@ -4,3 +4,23 @@
 .form-control.ng-valid{
     border-left: 5px solid green;  
 }
+.example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+.col-6 > img{
+    height: 100vh;
+}
+.cardoflogin{
+padding: 100px;
+
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+.blogin{
+    width: 200px;
+    text-transform: capitalize;
+}
+h1{
+    text-transform: capitalize;
+    color: rgb(32, 32, 32);
+}
