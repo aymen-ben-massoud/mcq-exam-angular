@@ -8,18 +8,11 @@
       "id": 1
     },
     {
-      "username": "aymen",
+      "username": "ahmed",
       "email": "aymen@123.com",
-      "password": "123",
-      "confirmpassword": "123",
+      "password": "1234",
+      "confirmpassword": "1234",
       "id": 2
-    },
-    {
-      "username": "aymen",
-      "email": "aymen@123.com",
-      "password": "azerty",
-      "confirmpassword": "azerty",
-      "id": 3
     }
   ],
   "doctors": [],
