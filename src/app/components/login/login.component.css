@@ -32,3 +32,6 @@ font-style: italic;
     font-family: 'Raleway', sans-serif;
    
 }
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 0;
+  }
