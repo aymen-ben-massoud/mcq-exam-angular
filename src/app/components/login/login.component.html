@@ -14,32 +14,34 @@
       <div class="col-md-6 col-12  ">
      
         
-        <div class="cardoflogin m-4 mt-4 ">
+        <div class="cardoflogin m-4 mt-5 ">
           <H1>login page</H1>
+          <form [formGroup]="loginForm">
 <div class="mt-4" >
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">student</mat-radio-button>
-            <mat-radio-button value="2">doctor</mat-radio-button>
+  
+          <mat-radio-group  formControlName="type" (change)="role($event)" aria-label="Select an option">
+            <mat-radio-button value="students">student</mat-radio-button>
+            <mat-radio-button value="doctor">doctor</mat-radio-button>
           </mat-radio-group></div>
         <div class="example-container">
           <mat-form-field appearance="fill">
             <mat-label>Enter your email</mat-label>
-            <input  matInput placeholder="pat@example.com" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <input  matInput placeholder="pat@example.com" formControlName="email" required>
+            
           </mat-form-field>
         </div>
         
         <div class="example-container">
           <mat-form-field appearance="fill">
             <mat-label>Enter your password</mat-label>
-            <input type="password" matInput placeholder="*****" [formControl]="password" required>
-            <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+            <input type="password" matInput placeholder="*****" formControlName="password" required>
+          
           </mat-form-field>
           
    
         </div>
-        <button mat-raised-button routerLink="/home"  class="blogin m-3" >login</button><br>
-        <button mat-stroked-button color="primary"routerLink="/register" >register</button>
+        <button mat-raised-button routerLink="/home"  class="blogin m-3" [disabled]="loginForm.invalid" (click)="submit()" >login</button><br>
+        <button mat-stroked-button color="primary"routerLink="/register" >register</button></form>
       </div>
     
 

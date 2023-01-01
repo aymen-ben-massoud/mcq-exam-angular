@@ -1,20 +1,17 @@
 {
   "students": [
     {
-      "username": "aymen",
-      "email": "aymen@123.com",
-      "password": "123",
-      "confirmpassword": "123",
-      "id": 1
-    },
-    {
       "username": "ahmed",
-      "email": "aymen@123.com",
-      "password": "1234",
-      "confirmpassword": "1234",
+      "email": "aymen@2.com",
+      "password": "azerty",
+      "confirmpassword": "azerty",
       "id": 2
     }
   ],
-  "doctors": [],
-  "login": []
+  "doctor": [],
+  "login": [
+    {
+      "id": 1
+    }
+  ]
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'app-login',
@@ -7,15 +9,54 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email = new FormControl('', [Validators.required, Validators.email])
-  password= new FormControl('', [Validators.required]);
+  loginForm!:FormGroup
+  users: any[] = []
+  type:string ='students'
+  constructor(private fb:FormBuilder,private crud: CrudService,  private route:Router){  }
 
-  getErrorMessage() {
-    if (this.email && this.password.hasError('required')) {
-      return 'You must enter a value';
-    }
-   
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  ngOnInit(): void {
+    this.creatform()
+    this.getstudent()
   }
+  creatform(){
+this.loginForm =  this.fb.group({
+  type: [this.type , [Validators.required]],
+  email :['', [Validators.required, Validators.email]],
+  password : ['', [Validators.required]]
+
+})
+
+  }
+  getstudent(){
+    this.crud.getusers(this.type).subscribe((res : any)=>{
+this.users = res
+
+
+    })
+  }
+  submit
+  (){
+
+let index = this.users.findIndex(item => item.email == this.loginForm.value.email &&   item.password   == this.loginForm.value.password )
+
+if(index == -1){
+ alert("email or password not correct")
+}
+else{
+    
+  const model = {
+    username: this.users[index].username,
+   role: this.type   
+      }
+  this.crud.login(model).subscribe((res:any)=> {
+ this.crud.user.next(res)
+    this.route.navigate(['/home'])
+    })
+} }
+
+
+role(event:any){
+this.type =event.value 
+}
 
 }

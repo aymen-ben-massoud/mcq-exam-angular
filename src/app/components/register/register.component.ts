@@ -13,15 +13,18 @@ import { CrudService } from 'src/app/services/crud.service';
 
 export class RegisterComponent {
   userForm!:FormGroup
+   students: any[] = []
+   type:string ='students'
   constructor(private fb:FormBuilder,private crud: CrudService,  private route:Router){  }
   ngOnInit(): void {
     this.creatform()
+    this.getstudent()
   }
 
   creatform(){
 
     this.userForm = this.fb.group({
-  
+  username: ["", [Validators.required]],
   email: [''  , [Validators.required , Validators.email]],
   
   password: [''  , [Validators.required]],
@@ -31,8 +34,14 @@ export class RegisterComponent {
     })
    
   }
-  submit
-  (){
+  getstudent(){
+    this.crud.getusers(this.type).subscribe((res : any)=>{
+this.students = res
+
+
+    })
+  }
+  submit(){
   
   const model = {
    username: this.userForm.value.username,
@@ -40,10 +49,15 @@ export class RegisterComponent {
    password: this.userForm.value.password,
    confirmpassword: this.userForm.value.confirmpassword
   }
+let index = this.students.findIndex(item => item.email == this.userForm.value.email)
+
+if(index !== -1){
+ alert("this email exist")
+}
+else{
   this.crud.creatuser(model).subscribe((res:any)=> {
-  this.route.navigate(['/home'])
-  })
-  
-  }
+    this.route.navigate(['/login'])
+    })
+} }
 
 }
