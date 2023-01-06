@@ -1,0 +1,127 @@
+
+  <div class="container-md container-fluid">
+
+<div class="row  justify-content-center">
+    <div class="col-md-8 col-12  mt-4">
+        <button class="m-3" mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+          </button>
+          <mat-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Fill out your name</ng-template>
+             
+             <div class="d-flex mt-2">
+               
+                <mat-form-field color="primary" class="example-full-width">
+                    <mat-label>language :  </mat-label>
+                    <input [formControl]="name" type="text" matInput placeholder="enter name of language" >
+                
+                
+                </mat-form-field>
+
+            </div>
+
+                <div>
+
+                  <button mat-raised-button  matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+              <form  [formGroup]="questionform" [formGroup]="secondFormGroup">
+                <div class="d-flex mt-2">
+                    <mat-radio-button color="primary" value="answer1"></mat-radio-button>
+                    <mat-form-field color="primary" class="example-full-width">
+                        <mat-label>input1 </mat-label>
+                        <input formControlName="question" matInput placeholder="Ex. Pizza" value="enter question ">
+                    
+                    
+                    </mat-form-field>
+    
+                </div>
+    <div class="inputesquestion">
+        <div>
+            <mat-radio-button color="primary" value="answer1"></mat-radio-button>
+                          <mat-form-field   appearance="fill">
+                            <mat-label>answer A</mat-label>
+                            <input formControlName="answer1" class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
+                        </mat-form-field>
+        
+                    </div>
+        <div>
+        <mat-radio-button color="primary" value="answer1"></mat-radio-button>
+                      <mat-form-field   appearance="fill">
+                        <mat-label>answer B</mat-label>
+                        <input formControlName="answer2" class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
+                    </mat-form-field>
+    
+                </div>
+                <div>
+                    <mat-radio-button color="primary" value="answer2"></mat-radio-button>
+                      <mat-form-field   appearance="fill">
+                        <mat-label>answer C</mat-label>
+                        <input formControlName="answer3" class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
+                    </mat-form-field>
+                </div>
+                <div>
+    
+                    <mat-radio-button color="primary" value="answer"></mat-radio-button>
+                    <mat-form-field   appearance="fill">
+                        <mat-label>answer D</mat-label>
+                        <input formControlName="answer4" class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
+                    </mat-form-field></div>
+                </div>
+                <div>
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button matStepperNext [disabled]="questionform.invalid"    class="m-2">Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              <div class="d-flex mt-2">
+                <mat-radio-button color="primary" value="answer1"></mat-radio-button>
+                <mat-form-field color="primary" class="example-full-width">
+                    <mat-label>input </mat-label>
+                    <input matInput placeholder="Ex. Pizza" value="enter question ">
+                
+                
+                </mat-form-field>
+
+            </div>
+<div class="inputesquestion">
+    <div>
+    <mat-radio-button color="primary" value="answer1"></mat-radio-button>
+                  <mat-form-field   appearance="fill">
+                    <mat-label>input 1</mat-label>
+                    <input class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
+                </mat-form-field>
+
+            </div>
+            <div>
+                <mat-radio-button color="primary" value="answer2"></mat-radio-button>
+                  <mat-form-field   appearance="fill">
+                    <mat-label>input 2</mat-label>
+                    <input class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
+                </mat-form-field>
+            </div>
+            <div>
+
+                <mat-radio-button color="primary" value="answer"></mat-radio-button>
+                <mat-form-field   appearance="fill">
+                    <mat-label>input 3</mat-label>
+                    <input class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
+                </mat-form-field></div>
+            </div>
+              <div>
+                <button mat-raised-button matStepperPrevious>Back</button>
+                <button mat-raised-button (click)="stepper.reset()" class="m-2">Reset</button>
+              </div>
+            </mat-step>
+          </mat-stepper>
+
+    </div>
+</div>
+
+  </div>

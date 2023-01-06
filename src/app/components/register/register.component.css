@@ -1,9 +1,15 @@
 
-.divimg > img{
+.divimg {
     height: 100vh;
+   
  
 }
+.divimg > img {
+    height: 90%;
+}
 .cardoflogin{
+
+      
 padding: 40px;
 position: relative;
 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -37,3 +43,9 @@ pad: 10px;
 cursor: pointer;
 
 }
+form{
+    text-align: center;
+  }
+  mat-label{
+   text-transform: capitalize;
+  }

@@ -14,6 +14,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {MatStepperModule} from '@angular/material/stepper';
+
+import { ToastrModule } from 'ngx-toastr';
+import { NewexamComponent } from './components/newexam/newexam/newexam.component';
 
 
 
@@ -24,10 +28,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-   NavbarComponent
+   NavbarComponent,
+   NewexamComponent
   ],
 
   imports: [
+    MatStepperModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), 
  BrowserModule,
     MatButtonModule,
     MatFormFieldModule,

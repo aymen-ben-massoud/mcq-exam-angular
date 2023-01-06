@@ -1,0 +1,12 @@
+.logo > i{
+font-size: 30px;
+}
+.logo{
+    display: flex;
+    align-items:baseline;
+}
+li > a {
+
+    font-size: 25px;
+    text-transform: capitalize;
+}

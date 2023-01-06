@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent {
   loginForm!:FormGroup
   users: any[] = []
   type:string ='students'
-  constructor(private fb:FormBuilder,private crud: CrudService,  private route:Router){  }
+  constructor(private fb:FormBuilder,private crud: CrudService,  private route:Router, private toaster: ToastrService){  }
 
   ngOnInit(): void {
     this.creatform()
@@ -40,7 +41,8 @@ this.users = res
 let index = this.users.findIndex(item => item.email == this.loginForm.value.email &&   item.password   == this.loginForm.value.password )
 
 if(index == -1){
- alert("email or password not correct")
+ this.toaster.error("email or password not correct")
+ this.route.navigate(['/login'])
 }
 else{
     
@@ -50,6 +52,7 @@ else{
       }
   this.crud.login(model).subscribe((res:any)=> {
  this.crud.user.next(res)
+ this.toaster.success("welcome")
     this.route.navigate(['/home'])
     })
 } }

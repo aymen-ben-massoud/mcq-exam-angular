@@ -12,12 +12,17 @@ export class AppComponent {
   constructor(private crud:CrudService){}
   ngOnInit(): void {
 
-   this.crud.getrole().subscribe((res:any)=>{
-this.crud.user.next(res)
+this.getuserdata()
+}
 
 
-   })
 
+getuserdata(){
+  this.crud.getrole().subscribe((res:any)=>{
+    this.crud.user.next(res)
+    
+    
+       })
 
 }
 }

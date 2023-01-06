@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/services/crud.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,7 +16,7 @@ export class RegisterComponent {
   userForm!:FormGroup
    students: any[] = []
    type:string ='students'
-  constructor(private fb:FormBuilder,private crud: CrudService,  private route:Router){  }
+  constructor(private fb:FormBuilder,private crud: CrudService,  private route:Router , private toaster: ToastrService){  }
   ngOnInit(): void {
     this.creatform()
     this.getstudent()
@@ -52,7 +53,7 @@ this.students = res
 let index = this.students.findIndex(item => item.email == this.userForm.value.email)
 
 if(index !== -1){
- alert("this email exist")
+this.toaster.error("this email exist")
 }
 else{
   this.crud.creatuser(model).subscribe((res:any)=> {

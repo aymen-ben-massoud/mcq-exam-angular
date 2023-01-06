@@ -9,6 +9,15 @@
     }
   ],
   "doctor": [],
+
+  "languages":[
+    {
+      "questions": [],
+      "name":"",
+      "id":""
+    }
+  ],
+
   "login": [
     {
       "id": 1
