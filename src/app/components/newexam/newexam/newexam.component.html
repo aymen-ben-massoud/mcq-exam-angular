@@ -4,12 +4,12 @@
 <div class="row  justify-content-center">
     <div class="col-md-8 col-12  mt-4">
         <button class="m-3" mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+            {{!isLinear ? 'Creat your exam' : 'Now'}}
           </button>
-          <mat-stepper [linear]="isLinear" #stepper>
-            <mat-step [stepControl]="firstFormGroup">
+          <mat-horizontal-stepper [selectedIndex]="stepperindex" linear #stepper>
+            <mat-step [completed]="startadd" >
               <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel>Fill out your name</ng-template>
+                <ng-template matStepLabel>Fill out your language</ng-template>
              
              <div class="d-flex mt-2">
                
@@ -24,17 +24,17 @@
 
                 <div>
 
-                  <button mat-raised-button  matStepperNext>Next</button>
+                  <button mat-raised-button   invvalid=""  (click)="start()" matStepperNext>Next</button>
                 </div>
               </form>
             </mat-step>
-            <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-              <form  [formGroup]="questionform" [formGroup]="secondFormGroup">
+            <mat-step [completed]="preview"  label="questions in : {{subjectname}}">
+              <form  [formGroup]="questionform" >
                 <div class="d-flex mt-2">
-                    <mat-radio-button color="primary" value="answer1"></mat-radio-button>
+                   
                     <mat-form-field color="primary" class="example-full-width">
-                        <mat-label>input1 </mat-label>
-                        <input formControlName="question" matInput placeholder="Ex. Pizza" value="enter question ">
+                        <mat-label>question </mat-label>
+                        <input formControlName="question" matInput  value="enter question ">
                     
                     
                     </mat-form-field>
@@ -42,7 +42,7 @@
                 </div>
     <div class="inputesquestion">
         <div>
-            <mat-radio-button color="primary" value="answer1"></mat-radio-button>
+            <mat-radio-button color="primary" (change)="getcorrect($event)" value="answer1"></mat-radio-button>
                           <mat-form-field   appearance="fill">
                             <mat-label>answer A</mat-label>
                             <input formControlName="answer1" class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
@@ -50,7 +50,7 @@
         
                     </div>
         <div>
-        <mat-radio-button color="primary" value="answer1"></mat-radio-button>
+        <mat-radio-button color="primary" (change)="getcorrect($event)" value="answer2"></mat-radio-button>
                       <mat-form-field   appearance="fill">
                         <mat-label>answer B</mat-label>
                         <input formControlName="answer2" class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
@@ -58,7 +58,7 @@
     
                 </div>
                 <div>
-                    <mat-radio-button color="primary" value="answer2"></mat-radio-button>
+                    <mat-radio-button color="primary"(change)="getcorrect($event)" value="answer3"></mat-radio-button>
                       <mat-form-field   appearance="fill">
                         <mat-label>answer C</mat-label>
                         <input formControlName="answer3" class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
@@ -66,15 +66,17 @@
                 </div>
                 <div>
     
-                    <mat-radio-button color="primary" value="answer"></mat-radio-button>
+                    <mat-radio-button color="primary" (change)="getcorrect($event)" value="answer4"></mat-radio-button>
                     <mat-form-field   appearance="fill">
                         <mat-label>answer D</mat-label>
                         <input formControlName="answer4" class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
                     </mat-form-field></div>
                 </div>
-                <div>
-                  <button mat-raised-button matStepperPrevious>Back</button>
-                  <button mat-raised-button matStepperNext [disabled]="questionform.invalid"    class="m-2">Next</button>
+                <div class="buttons">
+                  <button mat-raised-button   (click)="clearform()" >Clear</button>
+                  <button mat-raised-button   (click)="cancle()" >Cancle</button>
+                  <button mat-raised-button  [disabled]="questionform.invalid" (click)="creatquestion()"    >save</button>
+                  <button mat-raised-button matStepperNext  (click)="next()"  >Continue</button>
                 </div>
               </form>
             </mat-step>
@@ -116,10 +118,10 @@
             </div>
               <div>
                 <button mat-raised-button matStepperPrevious>Back</button>
-                <button mat-raised-button (click)="stepper.reset()" class="m-2">Reset</button>
+              
               </div>
             </mat-step>
-          </mat-stepper>
+          </mat-horizontal-stepper>
 
     </div>
 </div>

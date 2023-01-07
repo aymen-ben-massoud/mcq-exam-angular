@@ -9,15 +9,22 @@
     }
   ],
   "doctor": [],
-
-  "languages":[
+  "subjects": [
     {
-      "questions": [],
-      "name":"",
-      "id":""
+      "name": "vv",
+      "questions": [
+        {
+          "question": "v",
+          "answer1": "f",
+          "answer2": "f",
+          "answer3": "v",
+          "answer4": "v",
+          "correctanswer": "v"
+        }
+      ],
+      "id": 1
     }
   ],
-
   "login": [
     {
       "id": 1
