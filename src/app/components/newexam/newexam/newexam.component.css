@@ -20,3 +20,23 @@
     display: flex;
     justify-content: space-between;
   }
+  ul > li {
+    list-style: none;
+    display: flex; 
+ 
+  }
+
+  
+  .correctanswer{
+    color: green;
+  }
+
+  li> h6{
+
+    color: rgb(41, 41, 48);
+  }
+  .subjectname{
+    color: rgb(231, 106, 106);
+    display: flex;
+    justify-content: center;
+  }

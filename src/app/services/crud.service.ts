@@ -21,6 +21,8 @@ user = new Subject()
   }
   getrole(){
     return this.http.get("http://localhost:3000/login/1")
-
+  }
+  getlangauges(){
+    return this.http.get("http://localhost:3000/subjects")
   }
 }

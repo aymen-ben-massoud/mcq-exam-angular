@@ -83,39 +83,23 @@
             <mat-step>
               <ng-template matStepLabel>Done</ng-template>
               <div class="d-flex mt-2">
-                <mat-radio-button color="primary" value="answer1"></mat-radio-button>
-                <mat-form-field color="primary" class="example-full-width">
-                    <mat-label>input </mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="enter question ">
-                
-                
-                </mat-form-field>
+               
+            </div>
 
-            </div>
-<div class="inputesquestion">
-    <div>
-    <mat-radio-button color="primary" value="answer1"></mat-radio-button>
-                  <mat-form-field   appearance="fill">
-                    <mat-label>input 1</mat-label>
-                    <input class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
-                </mat-form-field>
-
-            </div>
-            <div>
-                <mat-radio-button color="primary" value="answer2"></mat-radio-button>
-                  <mat-form-field   appearance="fill">
-                    <mat-label>input 2</mat-label>
-                    <input class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
-                </mat-form-field>
-            </div>
-            <div>
-
-                <mat-radio-button color="primary" value="answer"></mat-radio-button>
-                <mat-form-field   appearance="fill">
-                    <mat-label>input 3</mat-label>
-                    <input class="example-form" matInput placeholder="Ex. Pizza" value="Sushi">
-                </mat-form-field></div>
-            </div>
+ 
+            <ul *ngFor="let item of questions ; let index = index" >
+              <h1 class="subjectname"><h4>langauge:</h4>{{subjectname}}</h1>
+            <li><h4>the question:</h4>  <b>{{item.question}}</b></li>
+             <li><h4>answer 1:</h4>  <b>{{item.answer1}}</b> </li>
+             <li>  <h4>answer 2:</h4>  <b>{{item.answer2}}</b> </li>
+             <li> <h4>answer 3:</h4> <b>{{item.answer3}} </b> </li>
+             <li> <h4>answer 4:</h4>  <b>{{item.answer4}} </b> </li>
+             <li  class="correctanswer" ><h4>the correct answer:</h4>  <b>{{item.correctanswer}}</b>
+             </li>
+             <button (click)="delete(index)"  class="btn btn-danger" >delete</button>
+            </ul>
+  
+            
               <div>
                 <button mat-raised-button matStepperPrevious>Back</button>
               
@@ -127,3 +111,6 @@
 </div>
 
   </div>
+  
+
+

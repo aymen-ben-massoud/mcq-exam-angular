@@ -18,7 +18,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NewexamComponent } from './components/newexam/newexam/newexam.component';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -33,6 +33,7 @@ import { NewexamComponent } from './components/newexam/newexam/newexam.component
   ],
 
   imports: [
+    MatDividerModule,
     MatStepperModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(), 

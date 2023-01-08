@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CrudService } from 'src/app/services/crud.service';
 import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
@@ -9,14 +10,16 @@ import { DoctorService } from 'src/app/services/doctor.service';
   styleUrls: ['./newexam.component.css']
 })
 export class NewexamComponent {
-  preview : boolean = true
+  id:any
+  preview : boolean = false
   stepperindex= 0
   startadd : boolean =  false
 subjectname:any
   correctnum:any
-  name =  new FormControl()
+  name =  new FormControl("")
   questionform!:FormGroup
   questions: any []= []
+  subjects: any []= []
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -24,10 +27,10 @@ subjectname:any
     secondCtrl: ['', Validators.required],
   });
   isLinear = false;
-  constructor(private _formBuilder: FormBuilder, private toaster: ToastrService, private servicedoc : DoctorService ) {}
+  constructor(private _formBuilder: FormBuilder, private toaster: ToastrService, private servicedoc : DoctorService,private service : CrudService ) {}
   ngOnInit(): void {
 this.formquestion()
- 
+
   }
 
 formquestion(){
@@ -54,17 +57,29 @@ correctanswer:this.questionform.value[this.correctnum]
 }
 this.questions.push(model)
 this.questionform.reset()
-}else{
+}
+
+else{
 this.toaster.error('enter the correct answer')
 }
 
-console.log(this.questions)
+
 }
 
 getcorrect(event :any){
  this.correctnum =event.value 
 }
-
+start(){
+  if(this.name.value == "" ){
+  this.toaster.error("fill out your language")
+  }else{
+    this.startadd = true
+  this.subjectname = this.name.value
+  }
+  if(this.startadd){
+    this.stepperindex = 1
+  }
+  }
 next(){
   const model  = {
     name:this.subjectname,
@@ -75,29 +90,22 @@ next(){
 
 if(this.preview){
   this.stepperindex = 2
-}
-  this.servicedoc.creatsubject(model).subscribe(res=>{   
-    this.preview = true})
+}else{
+  this.servicedoc.creatsubject(model).subscribe((res:any)=>{   
+    this.preview = true
+  
+    this.id = res.id})
 
-
 }
+ }
+
 
 
 
 
      
 
-start(){
-if(this.name.value == "" ){
-this.toaster.error("fill out your language")
-}else{
-  this.startadd = true
-this.subjectname = this.name.value
-}
-if(this.startadd){
-  this.stepperindex = 1
-}
-}
+
 
 clearform(){
   this.questionform.reset()
@@ -111,9 +119,21 @@ cancle(){
   this.startadd =  false
 
 }
-delete(index:any){
+
+
+
+ delete(index: any){
   this.questions.splice(index , 1)
-}
+  const model  = {
+    name:this.subjectname,
+ 
+   questions:this.questions
+   
+  }
+this.servicedoc.updatesubject(model , this.id).subscribe((res:any)=>{
+this.toaster.success('success')
+})
+ }
 
 
 }

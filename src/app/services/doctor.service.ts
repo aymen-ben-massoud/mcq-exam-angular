@@ -11,5 +11,8 @@ export class DoctorService {
 creatsubject(modle:any){
   return this.http.post("http://localhost:3000/subjects",modle)
 }
+updatesubject(modle:any , id :any){
+  return this.http.put(`http://localhost:3000/subjects/${id}`,modle)
 
+}
 }
